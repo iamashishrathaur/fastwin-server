@@ -18,6 +18,9 @@
     "password": "password",
     "database": "fastwin",
     "host": "db4free.net",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "dialectOptions": {
+      "connectTimeout": 60000 
+    }
   }
 }
