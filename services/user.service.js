@@ -1,5 +1,5 @@
 const {Users} = require('../models/index');
-
+const jwt = require('jsonwebtoken');
 const create= async (data)=>{
   try{
     const user= await Users.create(data);
@@ -16,7 +16,7 @@ const create= async (data)=>{
 
 }
 
-const getUserByMobile= async(userMobile,userPass)=>{
+const getUserByMobile= async(userMobile)=>{
   try{
       const user = await Users.findOne({
           where:{
@@ -30,7 +30,16 @@ const getUserByMobile= async(userMobile,userPass)=>{
   }
 }
 
+const createToken= (user)=>{
+   try{
+    return jwt.sign(user,process.env.JWT_KEY,{expiresIn:'2h'})
+   }
+   catch(err){
+    console.log(err)
+   }
+}
+
 
 module.exports={
-  create,getUserByMobile
+  create,getUserByMobile,createToken
 }

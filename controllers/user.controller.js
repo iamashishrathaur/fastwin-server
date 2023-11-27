@@ -33,11 +33,23 @@ const login= async (req, res)=>{
             message:"user not found"
           });
      }
-     
-     return res.status(201).json({
-      message:"successfully login"
-    });
+    if(user.password!=req.body.password){
+        return res.status(401).json({
+            message:"wrong password"
+          });
     }
+    const token = userService.createToken({id:user.id,mobile:user.mobile})
+    if(!token){
+        return res.status(500).json(serverError)
+    }
+     return res.status(201).json({
+      message:"successfully login",
+      data:token
+    });
+   
+
+}
+
 
 module.exports={
     addUsers,login
