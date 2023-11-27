@@ -21,6 +21,8 @@ app.get("/login",(req,res)=>{
     res.send("Login Page")
     console.log("Login Page")
 });
-app.listen(1000,()=>{
+
+const PORT= process.env.PORT || 1000;
+app.listen(PORT,()=>{
    console.log("Server is running..")
 });
