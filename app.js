@@ -1,3 +1,4 @@
+require( 'dotenv').config();
 const express= require("express");
 const bodyParser= require('body-parser')
 const cors = require('cors');
@@ -10,7 +11,7 @@ userRoute(app)
 
 app.get("/",(req,res)=>{
     res.send("Home page")
-    res.set('Access-Control-Allow-Origin', '*');
+    // res.set('Access-Control-Allow-Origin', '*');
     console.log("Home page")
 });
 app.get("/about",(req,res)=>{
@@ -22,7 +23,7 @@ app.get("/login",(req,res)=>{
     console.log("Login Page")
 });
 
-const PORT= process.env.PORT || 1000;
+const PORT= process.env.PORT  || 1000;
 app.listen(PORT,()=>{
    console.log("Server is running..")
 });
