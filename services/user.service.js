@@ -1,5 +1,4 @@
 const {Users} = require('../models/index');
-const { Sequelize} = require('sequelize');
 
 const create= async (data)=>{
   try{
