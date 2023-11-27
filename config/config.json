@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
+    "username": "fastwin",
     "password": "password",
     "database": "fastwin",
-    "host": "https://gray-hungry-duckling.cyclic.app/",
+    "host": "db4free.net",
     "dialect": "mysql"
   }
 }
