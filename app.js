@@ -3,7 +3,7 @@ var jwt = require('jsonwebtoken');
 const options = {
     expiresIn: "1h"
 };
-
+ // expire time 
 const token = jwt.sign({
     id: 1,
     username: "admin"
