@@ -29,7 +29,7 @@ const addUsers=async(req,res)=>{
 const login= async (req, res)=>{
     const user= await userService.getUserByMobile(req.body.mobile);
      if(!user){
-        return res.status(401).json({
+        return res.status(400).json({
             message:"user not found"
           });
      }
@@ -41,16 +41,19 @@ const login= async (req, res)=>{
     const token = userService.createToken({id:user.id,mobile:user.mobile})
     if(!token){
         return res.status(500).json(serverError)
-    }
+    }    
+    res.cookie('token', token, {
+        maxAge: 3600000, // 1 hour in milliseconds
+        expires: new Date(Date.now() + 3600000),
+        secure: true,
+        httpOnly: true,
+      });
      return res.status(201).json({
       message:"successfully login",
+      err:false,
       data:token
     });
-   
-
 }
-
-
 module.exports={
     addUsers,login
 }
