@@ -11,5 +11,5 @@ const token = jwt.sign({
 
 console.log(token)
 
-let res= jwt.verify(token, "mySecretKey", options);
+let res= jwt.verify(token, "mySecretKey");
 console.log(res)
